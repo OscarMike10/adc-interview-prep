@@ -1,1 +1,744 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon ADC Interview Prep — Dee Warren</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: 'Georgia', serif;
+    background: #0A0F1A;
+    color: #E8EAF0;
+    line-height: 1.7;
+    padding: 0 0 60px;
+  }
+ 
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0A0F1A 0%, #1A2744 50%, #0A1628 100%);
+    border-bottom: 2px solid #FF9900;
+    padding: 48px 32px 40px;
+    text-align: center;
+  }
+  .hero-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #FF9900;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .hero-sub {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #8899BB;
+    margin-bottom: 24px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FF9900;
+    font-family: 'Arial', sans-serif;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: #8899BB;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+ 
+  /* Navigation */
+  .nav {
+    background: #0D1420;
+    border-bottom: 1px solid #1E2D4A;
+    padding: 12px 32px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav a {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    color: #8899BB;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+  .nav a:hover { color: #FF9900; }
+ 
+  /* Container */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+ 
+  /* Section */
+  .section { padding: 48px 0 0; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #1E2D4A;
+  }
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    background: #FF9900;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+ 
+  /* Cards */
+  .card {
+    background: #0D1420;
+    border: 1px solid #1E2D4A;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FF9900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .card p, .card li {
+    font-size: 15px;
+    color: #C8D0E0;
+    margin-bottom: 8px;
+  }
+  .card ul { padding-left: 20px; }
+  .card li { margin-bottom: 6px; }
+ 
+  /* Answer blocks */
+  .answer {
+    background: #071018;
+    border-left: 3px solid #FF9900;
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+    margin: 12px 0 20px;
+    font-size: 15px;
+    color: #D0DAF0;
+    font-style: italic;
+  }
+ 
+  /* Question */
+  .question {
+    background: #1A2744;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 4px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+ 
+  /* Code blocks */
+  pre {
+    background: #050C14;
+    border: 1px solid #1E2D4A;
+    border-radius: 6px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin: 12px 0 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #7EC8A0;
+    line-height: 1.6;
+  }
+  .comment { color: #5A7A9A; }
+  .cmd { color: #FF9900; }
+ 
+  /* LP grid */
+  .lp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 600px) { .lp-grid { grid-template-columns: 1fr; } }
+  .lp-card {
+    background: #0D1420;
+    border: 1px solid #1E2D4A;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .lp-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FF9900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .lp-story {
+    font-size: 13px;
+    color: #8899BB;
+    line-height: 1.5;
+  }
+ 
+  /* Timeline */
+  .timeline { padding-left: 0; }
+  .tl-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .tl-dot {
+    width: 32px;
+    height: 32px;
+    background: #FF9900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0A0F1A;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tl-content h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+  }
+  .tl-content p {
+    font-size: 14px;
+    color: #8899BB;
+  }
+ 
+  /* Salary table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+  }
+  th {
+    background: #1A2744;
+    color: #FF9900;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #1E2D4A;
+    color: #C8D0E0;
+  }
+  tr:hover td { background: #0D1420; }
+  .highlight td { color: #FF9900; font-weight: 700; }
+ 
+  /* Divider */
+  .divider { border: none; border-top: 1px solid #1E2D4A; margin: 40px 0 0; }
+ 
+  /* Final CTA */
+  .cta {
+    background: linear-gradient(135deg, #1A2744, #0D1A30);
+    border: 2px solid #FF9900;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 48px;
+  }
+  .cta h2 {
+    font-size: 22px;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+  }
+  .cta p {
+    font-size: 15px;
+    color: #8899BB;
+    max-width: 500px;
+    margin: 0 auto 20px;
+  }
+  .cta-detail {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    color: #FF9900;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+ 
+  /* Tag */
+  .tag {
+    display: inline-block;
+    background: #1A2744;
+    border: 1px solid #2A3D5A;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    color: #8899BB;
+    margin: 2px;
+  }
+  .tag-orange {
+    background: rgba(255,153,0,0.15);
+    border-color: #FF9900;
+    color: #FF9900;
+  }
+</style>
+</head>
+<body>
+ 
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Interview Preparation Package</div>
+  <h1>Amazon Dedicated Cloud<br>Systems Development Engineer</h1>
+  <div class="hero-sub">Dee Warren, PhD, CISM — Monday August 3, 2026 — 8:30 AM MT</div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">$221K–$298K</div><div class="stat-label">Total Comp (L5–L6)</div></div>
+    <div class="stat"><div class="stat-num">$271</div><div class="stat-label">AMZN Today</div></div>
+    <div class="stat"><div class="stat-num">92%</div><div class="stat-label">Fit Score</div></div>
+    <div class="stat"><div class="stat-num">30 min</div><div class="stat-label">Call Duration</div></div>
+  </div>
+</div>
+ 
+<!-- NAV -->
+<nav class="nav">
+  <a href="#overview">Overview</a>
+  <a href="#opening">Opening</a>
+  <a href="#technical">Technical</a>
+  <a href="#linux">Linux</a>
+  <a href="#behavioral">Behavioral</a>
+  <a href="#leadership">LP Principles</a>
+  <a href="#salary">Salary</a>
+  <a href="#questions">Your Questions</a>
+  <a href="#prep">Prep Plan</a>
+</nav>
+ 
+<div class="container">
+ 
+<!-- OVERVIEW -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-icon">🎯</div>
+    <div class="section-title">Why Amazon ADC Changes Everything</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">Amazon Dedicated Cloud — What It Is</div>
+    <p>ADC is the division of AWS that builds and operates classified cloud infrastructure for the Intelligence Community and DoD. C2S (Commercial Cloud Services at Secret) and SC2S (at TS/SCI) are ADC products. You didn't just use these environments — you deployed production workloads on them at the Defense Intelligence Agency. You were a power user of the infrastructure you'd now be building.</p>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">Why Your Profile Is Rare for This Team</div>
+    <ul>
+      <li>Full stack developer at DIA — Angular 2+, PostgreSQL, JavaScript — you can write code</li>
+      <li>Lead PaaS engineer — OpenShift 4, Terraform, Ansible, sudo/root on classified RHEL nodes</li>
+      <li>Operated C2S and SC2S in production — almost no other candidate can say this</li>
+      <li>Active TS/SCI CI Polygraph — the hardest single requirement to meet</li>
+      <li>AI Control Board member at BAE — you govern AI systems at enterprise scale</li>
+      <li>PhD in Information Security — AI cybersecurity trust research</li>
+    </ul>
+  </div>
+ 
+  <table>
+    <tr><th>Level</th><th>Base</th><th>Annual RSU</th><th>Bonus</th><th>Total Comp</th></tr>
+    <tr><td>L4</td><td>$96.5K</td><td>$21K</td><td>$4.5K</td><td>$122K</td></tr>
+    <tr class="highlight"><td>L5 (Target)</td><td>$146K</td><td>$65.7K</td><td>$8.6K</td><td>$221K</td></tr>
+    <tr class="highlight"><td>L6 (Push for)</td><td>$163K</td><td>$135K</td><td>$0</td><td>$298K</td></tr>
+  </table>
+  <p style="font-size:13px;color:#8899BB;font-family:Arial,sans-serif;">AMZN closed at $271.58 today (+15.32%) on strong Q2 earnings. AWS growth accelerating to 37% YoY. Morgan Stanley price target raised to $335.</p>
+</div>
+ 
+<!-- OPENING -->
+<div class="section" id="opening">
+  <div class="section-header">
+    <div class="section-icon">🎤</div>
+    <div class="section-title">Opening — Tell Me About Yourself</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">Say This — Exactly Like This</div>
+  </div>
+  <div class="answer">
+    "I'm a cleared full stack engineer and platform architect with 14 years across DoD and IC environments. I started at the Defense Intelligence Agency as a software developer — building full stack applications using Angular 2+, PostgreSQL, and JavaScript for mission systems. From there I moved into platform engineering, where I was the lead engineer on DIA's Platform as a Service team. I had sudo and root access standing up OpenShift 4 clusters across AWS EC2, C2S, and SC2S environments — doing full environment deployments in two-day cycles using Terraform and Ansible. I'm currently a Principal ISSO at BAE Systems and a member of the AI Control Board governing enterprise AI adoption. I hold an active TS/SCI with a CI Polygraph and I have a PhD in Information Security. What drew me to ADC specifically is that I've operated on C2S and SC2S in production — I know that environment deeply — and I want to be on the team that builds it."
+  </div>
+</div>
+ 
+<!-- TECHNICAL -->
+<div class="section" id="technical">
+  <div class="section-header">
+    <div class="section-icon">⚙️</div>
+    <div class="section-title">Technical Questions & Answers</div>
+  </div>
+ 
+  <div class="question">"Walk me through how your team deployed OpenShift 4 across C2S and SC2S — start to finish."</div>
+  <div class="answer">"We started in the AWS cost calculator to size the environment — CPU, memory, storage — based on workload requirements for that classification tier. Once approved, we provisioned EC2 instances in either C2S for Secret workloads or SC2S for TS/SCI. From there we stood up the OpenShift 4 cluster on those instances — I had sudo and root access throughout, so I was doing the actual platform installation, not just observing. Once the cluster was up, we ran Ansible playbooks for STIG hardening and security baseline enforcement across the RHEL and CoreOS nodes. Prisma Cloud went in for runtime container security monitoring, Keycloak for SSO and RBAC across projects, Splunk universal forwarders on every node shipping to the indexer, and GitLab for source control and pipeline management. Confluence handled our documentation. Full cycle — cost calculator to production-ready classified environment — we were completing that in about two days once the process was dialed in."</div>
+ 
+  <div class="question">"What was different between C2S and SC2S?"</div>
+  <div class="answer">"The classification boundary was the fundamental difference. C2S is AWS at the Secret level — SC2S is TS/SCI, more restricted with tighter access controls and a smaller footprint of approved services. The deployment process was largely the same — same Terraform IaC, same Ansible playbooks — but the network segmentation between tiers was a hard boundary. No data moved between C2S and SC2S without an approved transfer process. Within each environment, OpenShift network policies controlled pod-to-pod communication. Security posture requirements were stricter in SC2S — more controls to validate, tighter audit logging requirements, which is where the Splunk forwarder configuration was especially important."</div>
+ 
+  <div class="question">"How did you structure Terraform in a classified environment?"</div>
+  <div class="answer">"Modular structure — separate modules for networking, compute, and platform components so we could reuse them across environments without duplicating code. State management was kept within the classified environment itself — no remote state outside the boundary. We maintained separate state backends per classification tier so C2S state was completely isolated from SC2S. Terraform workspaces helped manage dev, test, and prod within each tier without state collision."</div>
+ 
+  <div class="question">"Walk me through the Ansible playbooks during hardening."</div>
+  <div class="answer">"The playbooks covered the full STIG hardening baseline for RHEL and CoreOS nodes — package management, service hardening, file permission enforcement, audit logging configuration, and security baseline settings aligned to DISA STIGs. Structured as roles for modularity so we could run specific roles independently when remediating a finding without touching the whole baseline. Idempotency was critical — we ran those playbooks multiple times during a deployment cycle and needed consistent outcomes every run. We also used Ansible to configure Splunk forwarder deployment and Keycloak integration settings post-cluster standup."</div>
+ 
+  <div class="question">"Tell me about the Splunk implementation — forwarders, indexing, configuration."</div>
+  <div class="answer">"We deployed Splunk universal forwarders on every OpenShift node — control plane and workers — shipping logs to a centralized Splunk indexer within the classified environment. The forwarders were configured to capture OS-level audit logs, OpenShift platform logs, and application-level events. On the indexer side we built correlation searches and dashboards to surface indicators of anomalous activity — failed authentication, privilege escalation events, unusual network connections between pods. The forwarder deployment itself was automated through Ansible as part of our standard hardening playbook, so every new node that came up was automatically configured and shipping logs within the deployment cycle."</div>
+ 
+  <div class="question">"How is AWS troubleshooting different on EC2 vs physical hardware?"</div>
+  <div class="answer">"The core Linux diagnostic commands are identical — top, ps aux, free -h, vmstat, iostat, df -h, journalctl. The additional layer on EC2 is checking CloudWatch metrics before SSH'ing in if you have console access, verifying you're not hitting EBS IOPS or throughput limits rather than a physical disk constraint, and on burstable T-series instances checking CPU credit balance since a depleted credit pool looks like a CPU bottleneck but the fix is completely different. In ADC air-gapped environments the CloudWatch access path may vary, so knowing the OS-level commands cold is essential regardless."</div>
+</div>
+ 
+<!-- LINUX -->
+<div class="section" id="linux">
+  <div class="section-header">
+    <div class="section-icon">🖥️</div>
+    <div class="section-title">Linux Commands — Know These Cold</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">System Performance Diagnosis — In Order</div>
+  </div>
+<pre><span class="comment"># Step 1 — 30-second picture</span>
+<span class="cmd">top</span>                          <span class="comment"># CPU, memory, load average, top processes</span>
+<span class="cmd">htop</span>                         <span class="comment"># Same but easier to read, sort with F6</span>
+ 
+<span class="comment"># Step 2 — CPU deep dive</span>
+<span class="cmd">ps aux --sort=-%cpu | head -20</span>   <span class="comment"># Top CPU consumers</span>
+<span class="cmd">mpstat -P ALL 1</span>              <span class="comment"># Per-core CPU usage</span>
+ 
+<span class="comment"># Step 3 — Memory</span>
+<span class="cmd">free -h</span>                      <span class="comment"># Total/used/available — watch "available" not "free"</span>
+<span class="cmd">vmstat 1 5</span>                   <span class="comment"># si/so = swap in/out. r = run queue. Non-zero si/so = bad</span>
+ 
+<span class="comment"># Step 4 — Disk I/O</span>
+<span class="cmd">iostat -xz 1</span>                 <span class="comment"># %util near 100% = disk saturated. await = wait time</span>
+<span class="cmd">iotop</span>                        <span class="comment"># Which processes are doing heavy disk I/O</span>
+ 
+<span class="comment"># Step 5 — Network</span>
+<span class="cmd">ss -tulnp</span>                    <span class="comment"># Open ports and listening services</span>
+<span class="cmd">netstat -i</span>                   <span class="comment"># Interface stats — errors and drops</span>
+ 
+<span class="comment"># Step 6 — Logs</span>
+<span class="cmd">journalctl -xe</span>               <span class="comment"># Recent system errors</span>
+<span class="cmd">tail -f /var/log/messages</span>    <span class="comment"># Live system log</span>
+ 
+<span class="comment"># Step 7 — Disk space (always check this)</span>
+<span class="cmd">df -h</span>                        <span class="comment"># Full disk causes cascading failures</span>
+<span class="cmd">du -sh /var/log/* | sort -rh | head -10</span>  <span class="comment"># What's consuming space</span></pre>
+ 
+  <div class="card">
+    <div class="card-title">grep — Multiple Words</div>
+  </div>
+<pre><span class="comment"># OR logic — find lines with any of these words</span>
+<span class="cmd">grep -E "error|warning|failed" /var/log/messages</span>
+ 
+<span class="comment"># Multiple -e flags</span>
+<span class="cmd">grep -e "error" -e "failed" /var/log/messages</span>
+ 
+<span class="comment"># AND logic — both words on same line</span>
+<span class="cmd">grep "error" /var/log/messages | grep "splunk"</span>
+ 
+<span class="comment"># Case insensitive + line numbers + context</span>
+<span class="cmd">grep -Ein "error|failed" /var/log/splunkd.log -A 2</span></pre>
+ 
+  <div class="card">
+    <div class="card-title">Process Management</div>
+  </div>
+<pre><span class="comment"># Restart a service gracefully first</span>
+<span class="cmd">systemctl restart splunk</span>
+ 
+<span class="comment"># Check service status</span>
+<span class="cmd">systemctl status splunk</span>
+ 
+<span class="comment"># Find PID</span>
+<span class="cmd">pgrep splunkd</span>
+<span class="cmd">ps aux | grep splunk</span>
+ 
+<span class="comment"># Kill gracefully, then force if needed</span>
+<span class="cmd">kill -15 $(pgrep splunkd)</span>    <span class="comment"># SIGTERM — graceful</span>
+<span class="cmd">kill -9 $(pgrep splunkd)</span>     <span class="comment"># SIGKILL — force (last resort)</span>
+ 
+<span class="comment"># Reduce CPU priority without killing</span>
+<span class="cmd">renice +10 -p $(pgrep splunkd)</span>   <span class="comment"># Lower priority, stays running</span></pre>
+ 
+  <div class="card">
+    <div class="card-title">File & Search Operations</div>
+  </div>
+<pre><span class="comment"># Find files modified in last 24 hours</span>
+<span class="cmd">find /var/log -mtime -1</span>
+ 
+<span class="comment"># Count occurrences</span>
+<span class="cmd">grep -c "error" filename.log</span>
+ 
+<span class="comment"># Recursive search</span>
+<span class="cmd">grep -rn "unauthorized" /var/log/</span>
+ 
+<span class="comment"># SCP file to remote</span>
+<span class="cmd">scp file.txt user@hostname:/remote/path/</span>
+ 
+<span class="comment"># Check open ports</span>
+<span class="cmd">ss -tulnp</span>
+<span class="cmd">netstat -tulnp</span></pre>
+ 
+  <div class="card">
+    <div class="card-title">Python — Basic Patterns They May Test</div>
+  </div>
+<pre><span class="comment"># Parse a log file and count errors</span>
+with open('/var/log/app.log', 'r') as f:
+    lines = f.readlines()
+ 
+error_count = sum(1 for line in lines if 'error' in line.lower())
+print(f"Total errors: {error_count}")
+ 
+<span class="comment"># Find duplicate entries in a list</span>
+from collections import Counter
+items = ['a', 'b', 'a', 'c', 'b', 'a']
+duplicates = [item for item, count in Counter(items).items() if count > 1]
+ 
+<span class="comment"># Simple retry mechanism</span>
+import time
+def retry(func, attempts=3, delay=2):
+    for i in range(attempts):
+        try:
+            return func()
+        except Exception as e:
+            if i == attempts - 1:
+                raise
+            time.sleep(delay)
+ 
+<span class="comment"># Dictionary operations</span>
+d = {'host': 'server1', 'status': 'running'}
+d.get('status', 'unknown')    <span class="comment"># Safe get with default</span>
+for key, value in d.items():  <span class="comment"># Iterate key-value pairs</span>
+    print(f"{key}: {value}")</pre>
+</div>
+ 
+<!-- BEHAVIORAL -->
+<div class="section" id="behavioral">
+  <div class="section-header">
+    <div class="section-icon">💬</div>
+    <div class="section-title">Behavioral Questions & Answers</div>
+  </div>
+ 
+  <div class="question">"Tell me about a time something broke during a deployment and how you handled it."</div>
+  <div class="answer">"During one of our SC2S deployments, we had a Splunk forwarder configuration that conflicted with an existing SELinux policy on the node — causing the forwarder to fail silently, so logs weren't shipping and we didn't know immediately. I caught it during post-deployment validation — the indexer wasn't receiving data from two nodes. I SSH'd in, reviewed the logs, isolated the conflict to a specific SELinux policy blocking the forwarder's socket. Remediated the playbook to account for that policy, re-ran the role on the affected nodes, validated the fix, and updated the playbook in GitLab with a comment documenting exactly what the conflict was and why the fix worked. After that we added a forwarder connectivity validation step to our deployment checklist so we'd catch it immediately on future deployments."</div>
+ 
+  <div class="question">"How do you balance security requirements with delivery timelines?"</div>
+  <div class="answer">"By embedding security into the process rather than treating it as a separate gate. At DIA we couldn't deploy fast and then spend a week hardening — the timeline didn't allow it and the classification environment didn't either. So we built security into the automation from day one. STIG hardening ran with every deployment. Prisma Cloud was configured before we handed an environment over. Splunk forwarders were part of the same Ansible run as the platform standup. Security and delivery weren't in tension — they happened simultaneously. The two-day deployment cycle was only possible because we didn't treat security as an afterthought."</div>
+ 
+  <div class="question">"Tell me about working with a government customer in a classified program."</div>
+  <div class="answer">"At DIA and USSOCOM I worked directly with government stakeholders daily — coordinating platform availability, addressing security findings, and supporting mission requirements in a high-tempo operational environment. I translated technical platform status into language that made sense for program managers and government leads. I also briefed senior leaders on platform posture and security status. I received the Joint Civilian Service Award from the Chairman of the Joint Chiefs for that work, which reflects the quality of that government relationship and mission impact."</div>
+ 
+  <div class="question">"Why Amazon ADC specifically?"</div>
+  <div class="answer">"Because I've operated on C2S and SC2S in production at the TS/SCI level — I know that environment from the inside as a customer. ADC is building the infrastructure that every IC program is migrating to. I want to be on the team that builds it, not just uses it. Amazon also just reported 37% AWS growth this quarter and invested $50 billion in AI — ADC is at the center of where national security computing is going for the next 20 years. That's where I want to be."</div>
+ 
+  <div class="question">"What's your greatest strength?"</div>
+  <div class="answer">"The combination of hands-on engineering and security governance across classified environments. I started as a full stack developer — Angular, PostgreSQL, JavaScript — then moved into platform engineering running OpenShift on AWS at the highest classification levels, then into AI governance on the BAE AI Control Board. Most engineers understand the stack or the security. I understand both, and I've operated at TS/SCI throughout. That's rare in this market."</div>
+</div>
+ 
+<!-- LEADERSHIP PRINCIPLES -->
+<div class="section" id="leadership">
+  <div class="section-header">
+    <div class="section-icon">🏆</div>
+    <div class="section-title">Amazon Leadership Principles — Your Stories</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">How Amazon Interviews Work</div>
+    <p>Every behavioral question at Amazon maps to one of their 14 Leadership Principles. They use the STAR format — Situation, Task, Action, Result. Prepare one strong story per principle below. The same story can sometimes serve multiple principles.</p>
+  </div>
+ 
+  <div class="lp-grid">
+    <div class="lp-card">
+      <div class="lp-name">Customer Obsession</div>
+      <div class="lp-story">Your government customers at DIA/USSOCOM. Two-day deployment cycles delivered because the mission couldn't wait. Joint Civilian Service Award.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Ownership</div>
+      <div class="lp-story">Lead engineer on PaaS team — you owned the platform end to end. Sudo/root. Not a support role. You made decisions and lived with the consequences.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Invent and Simplify</div>
+      <div class="lp-story">Ansible playbook automation that reduced full environment deployments to 2-day cycles. Automated what was previously manual, repeatable, and error-prone.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Are Right, A Lot</div>
+      <div class="lp-story">AI Control Board at BAE — you make governance decisions on enterprise AI adoption. Risk assessments for LLM deployment. Go/no-go determinations.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Learn and Be Curious</div>
+      <div class="lp-story">Full stack developer → platform engineer → ISSO → AI governance board member → PhD. 14-year continuous evolution across disciplines.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Hire and Develop the Best</div>
+      <div class="lp-story">Moving to lead a team of ISSOs at BAE Broomfield. Mentoring junior analysts in the Army. Panel interview experience — crafting ISSO technical questions.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Insist on the Highest Standards</div>
+      <div class="lp-story">STIG hardening embedded in every deployment — not bolted on afterward. Security posture maintained even under 2-day cycle pressure.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Think Big</div>
+      <div class="lp-story">PhD dissertation on AI cybersecurity trust — original empirical research on a problem Anthropic and Amazon are both trying to solve at scale.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Bias for Action</div>
+      <div class="lp-story">SELinux/Splunk forwarder conflict — identified, diagnosed, fixed, documented, updated the playbook, added validation step. All without waiting for approval to act.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Frugality</div>
+      <div class="lp-story">AWS cost calculator as starting point for every deployment — right-sizing environments before provisioning. Not over-building classified infrastructure.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Earn Trust</div>
+      <div class="lp-story">Joint Civilian Service Award from Chairman of the Joint Chiefs. TS/SCI CI Poly maintained across career. Government customers trusted you with the highest classification systems.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Dive Deep</div>
+      <div class="lp-story">PhD-level research into AI security trust modeling. Spearman's Rho quantitative analysis. Not surface-level — empirical, rigorous, published.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Have Backbone; Disagree and Commit</div>
+      <div class="lp-story">Security decisions on AI Control Board that required saying no to business units. Holding the compliance line on LLM deployments that didn't meet classification requirements.</div>
+    </div>
+    <div class="lp-card">
+      <div class="lp-name">Deliver Results</div>
+      <div class="lp-story">14 years of continuous cleared delivery — DIA PaaS standing up in 2 days, BAE ATOs maintained, USSOCOM mission support awarded at Chairman level.</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- SALARY -->
+<div class="section" id="salary">
+  <div class="section-header">
+    <div class="section-icon">💰</div>
+    <div class="section-title">Salary Negotiation</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">When They Ask Your Target</div>
+  </div>
+  <div class="answer">"Based on my profile — active TS/SCI CI Polygraph, 14 years of experience including full stack development and classified cloud platform engineering at DIA on C2S and SC2S — I'm targeting L5 or L6 compensation. I understand Amazon's structure is base plus RSUs, and I'm looking at total compensation in the $220,000 to $280,000 range. I'm flexible on the structure between base and equity — I'm a long-term thinker and I believe in where AWS is going."</div>
+ 
+  <div class="card">
+    <div class="card-title">If They Push Back</div>
+    <p>"I'm also in active conversations with roles paying $195K–$290K base, so I want to make sure we're aligned on total compensation being competitive. That said, Amazon's RSU structure and the ADC mission are genuinely compelling to me — I'd rather be here than anywhere else if the numbers work."</p>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">AMZN Stock Context</div>
+    <p>Closed today at $271.58 — up 15.32% on Q2 earnings beat. AWS grew 37% YoY. Morgan Stanley raised price target to $335. At L5, $65K in annual RSUs at $271 = ~240 shares/year. If AMZN hits $335 analyst target, those same shares = ~$80K/year. The RSUs compound with stock appreciation.</p>
+  </div>
+</div>
+ 
+<!-- YOUR QUESTIONS -->
+<div class="section" id="questions">
+  <div class="section-header">
+    <div class="section-icon">❓</div>
+    <div class="section-title">Your Questions to Ask Bardia</div>
+  </div>
+ 
+  <div class="card">
+    <ul>
+      <li>"Can you tell me more about which specific IC agency or program this team primarily supports?"</li>
+      <li>"What does the team look like — size, skill mix, how long has the core team been together?"</li>
+      <li>"What's the biggest technical challenge the team is working through right now?"</li>
+      <li>"What does the onboarding process look like for someone coming in from a cleared contractor background?"</li>
+      <li>"Is this an L5 or L6 level position, and what does the leveling conversation look like?"</li>
+      <li>"What does success look like in the first 90 days?"</li>
+      <li>"What's the interview process from here — technical rounds, loop structure, timeline?"</li>
+    </ul>
+  </div>
+</div>
+ 
+<!-- PREP PLAN -->
+<div class="section" id="prep">
+  <div class="section-header">
+    <div class="section-icon">📅</div>
+    <div class="section-title">48-Hour Prep Plan</div>
+  </div>
+ 
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot">F</div>
+      <div class="tl-content">
+        <h3>Friday August 1 — Today</h3>
+        <p>Submit Anthropic application (resume built, 20 min). Review your full DIA story — software developer to platform engineer. Practice the opening out loud 3 times. Rest tonight.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">Sa</div>
+      <div class="tl-content">
+        <h3>Saturday August 2 — Deep Prep</h3>
+        <p>Morning: Open a terminal. Run every Linux command in this guide. Muscle memory matters. Afternoon: Review Python patterns. Read about Amazon Leadership Principles — write your story for each one. Evening: Full mock interview.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">Su</div>
+      <div class="tl-content">
+        <h3>Sunday August 3 Eve — Final Prep</h3>
+        <p>Review this document one more time. Practice your opening out loud. Set out what you're wearing. Confirm the Teams/call link. Get to bed early — 8:30 AM means sharp and fresh.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">M</div>
+      <div class="tl-content">
+        <h3>Monday August 3 — 8:30 AM MT</h3>
+        <p>Clean background. Camera on. Headset in. Water nearby. Quiet space away from family. You've done harder things than this. Walk in confident — you operated on the infrastructure they build.</p>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- CTA -->
+<div class="cta">
+  <h2>This is the one, Dee.</h2>
+  <p>You operated on C2S and SC2S. You built the platform. You have the clearance. You have the PhD. You have the AI governance credentials. Nobody else walking into this interview has that combination.</p>
+  <div class="cta-detail">For Alanna, Zeke & Calvin — Parker, CO → $221K–$298K → Go get it.</div>
+</div>
+ 
+</div><!-- end container -->
+ 
+</body>
+</html>
+ 
